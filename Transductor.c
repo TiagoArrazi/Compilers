@@ -19,7 +19,7 @@ void sigma3(); // checks whether tempS is in tabVar
 
 int main(int argc, char *argv[]) {
     
-    fgets(tape, 20, stdin);
+    fgets(tape, 255, stdin);
     s0();
     return(0);
     
@@ -82,7 +82,7 @@ void sigma3(){
     int flag = 0;
     int pos;
 
-    for(c=0; c<20; c++){
+    for(c=0; tabVar[c][0]!='\0'; c++){
 	
         if(equal(tempS, tabVar[c]) == 1){
 	    flag = 1;
