@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <conio.h>
 
 
 char tape[255]; int p=0;
@@ -18,9 +17,9 @@ void sigma1(); // tempS[0] <- symbol
 void sigma2(); // tempS += symbol
 void sigma3(); // checks whether tempS is in tabVar
 
-int main() {
+int main(int argc, char *argv[]) {
     
-    gets(tape);
+    fgets(tape, 20, stdin);
     s0();
     return(0);
     
@@ -80,22 +79,32 @@ void sigma3(){
     tempS[t] = '\0';
     
     int c;
+    int flag = 0;
+    int pos;
+
     for(c=0; c<20; c++){
-        if(equal(tempS, tabVar[c]) == 1){
-            printf("VAR(%d) ", c);
-            t = 0;
-        }
-        else{
-            copy(tabVar[k], tempS);
-            printf("VAR(%d) ", k);
-            t = 0;
-            k++;
-        }
-        
-        s0();
-    }
 	
-	    
+        if(equal(tempS, tabVar[c]) == 1){
+	    flag = 1;
+	    pos = c;
+
+	}
+    }
+
+    if(flag == 1){
+        printf("VAR(%d) ", pos);
+   
+    }
+
+    else{
+        copy(tabVar[k], tempS);
+	printf("VAR(%d) ", k);
+	k++;
+    
+    }
+
+    t = 0;
+    s0();   
 }
 
 
@@ -115,18 +124,19 @@ int equal(char u[], char d[]) {
     while(u[i] != '\0' && d[i] != '\0'){
     	
     	if(u[i] != d[i]){
-    		flag = 1;
-		}
-    	i++;
+            flag = 1;
 	}
+
+    	i++;
+    }
 	
 	if(flag == 0 && u[i] == '\0' && d[i] == '\0'){
-		printf("\n%s & %s are equal\n", u, d);
-        return 1;
+	    //printf("\n%s & %s are equal\n", u, d);
+            return 1;
 	}
-    else{
-    	printf("\n%s & %s are NOT equal\n", u, d);
-        return 0;
+    	else{
+    	    //printf("\n%s & %s are NOT equal\n", u, d);
+            return 0;
 	}
     
 }
