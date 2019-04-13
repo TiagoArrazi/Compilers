@@ -1,3 +1,10 @@
+/*
+
+TIAGO COSTA ARRAZI
+GIOVANE JOSE FERNANDES
+
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 
